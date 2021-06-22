@@ -1,8 +1,10 @@
 import React from "react";
+import MainLayout from "../components/layouts/MainLayout";
 
-const MagazineSite = () => {
+const MagazineSite = (props) => {
   return (
-   <div></div>
+    <MainLayout {...props}>
+    </MainLayout>
   );
 };
 
