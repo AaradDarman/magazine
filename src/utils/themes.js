@@ -3,7 +3,7 @@ export const lightTheme = {
   text: "#020101",
   primary: "#fefefe",
   secondary: "#ECECEC",
-  accent: "#a31924",
+  accent: "#E31E2E",
 };
 
 export const darkTheme = {
@@ -11,5 +11,5 @@ export const darkTheme = {
   text: "#fefefe",
   primary: "#020101",
   secondary: "#293133",
-  accent: "#a31924",
+  accent: "#E31E2E",
 };
