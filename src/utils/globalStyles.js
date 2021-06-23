@@ -1,4 +1,5 @@
 import { createGlobalStyle } from "styled-components";
+import { LightenDarkenColor } from "./colorHelper";
 export const GlobalStyles = createGlobalStyle`
   @font-face {
     font-family: "BYekan";
@@ -26,5 +27,20 @@ export const GlobalStyles = createGlobalStyle`
   a {
     text-decoration: none !important;
     color: inherit;
+  }
+  #header.float-header {
+    box-shadow: 0 2px 12px -4px rgb(0 0 0 / 30%);
+  }
+  #header.float-header .dark-layer {
+    background:${({ theme }) => theme.primary};
+  }
+  #header.float-header .dark-layer nav ul {
+    color: ${({ theme }) => theme.text};
+  }
+  #header.float-header  a.dropdowwn-toggle:hover::after {
+    background-color: ${({ theme }) => LightenDarkenColor(theme.accent, 20)};
+  }
+  #header.float-header  a.dropdowwn-toggle::after {
+    background-color: ${({ theme }) => theme.text};
   }
   `;
