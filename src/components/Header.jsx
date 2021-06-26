@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import styled from "styled-components";
 import { Icon } from "@blueprintjs/core";
 import styled, { useTheme } from "styled-components";
 import { LightenDarkenColor } from "../utils/colorHelper";
+import useBreakpoints from "../utils/useBreakPoints";
 import DropDown from "./DropDown";
 import Toggle from "./shared/Toggler";
 
@@ -12,6 +12,7 @@ const Wraper = styled.header`
   display: block;
   width: 100%;
   transition: all 200ms ease-in-out;
+  z-index: 99;
   .dark-layer {
     display: flex;
     align-items: center;
@@ -23,6 +24,9 @@ const Wraper = styled.header`
   .dark-layer nav ul {
     transition: all 50ms ease-in-out;
   }
+  .bp3-icon {
+    cursor: pointer;
+  }
   .navbar-brand img {
     width: 200px;
   }
@@ -32,6 +36,19 @@ const TopBar = styled.nav`
   background-color: ${({ theme }) => theme.secondary};
   color: ${({ theme }) => theme.text};
   transition: all 200ms ease-in-out;
+  display: flex;
+  &::-webkit-scrollbar {
+    height: ${({ isSm }) => isSm && "10px"};
+  }
+  &::-webkit-scrollbar-track {
+    background: ${({ theme, isSm }) => isSm && theme.secondary};
+  }
+  &::-webkit-scrollbar-thumb {
+    background: ${({ isSm }) => isSm && "#888"};
+  }
+  &::-webkit-scrollbar-thumb:hover {
+    background: ${({ isSm }) => isSm && "#555"};
+  }
   & ul {
     transition: all 200ms ease-in-out;
     display: flex;
@@ -81,6 +98,7 @@ const BottemNav = styled.nav`
 const Header = (props) => {
   const { theme, toggleTheme } = props;
   const mTheme = useTheme();
+  const { isSm } = useBreakpoints();
 
   let lastKnownScrollPosition = 0;
   const [float, setFloat] = useState(false);
@@ -98,7 +116,7 @@ const Header = (props) => {
   });
   return (
     <Wraper id="header">
-      <TopBar>
+      <TopBar isSm={isSm} className="mw-100 overflow-auto">
         <ul>
           <li>
             <a href="">پلی استیشن ۵</a>
