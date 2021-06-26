@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import { Icon } from "@blueprintjs/core";
+import styled, { useTheme } from "styled-components";
 import { LightenDarkenColor } from "../utils/colorHelper";
 import DropDown from "./DropDown";
 import Toggle from "./shared/Toggler";
@@ -52,7 +54,6 @@ const TopBar = styled.nav`
   }
 `;
 const BottemNav = styled.nav`
-  padding: 0.8rem 1rem;
   transition: all 200ms ease-in-out;
   * {
     transition: all 200ms ease-in-out;
@@ -68,7 +69,7 @@ const BottemNav = styled.nav`
   }
   a {
     display: block;
-    padding: 0.5rem 1rem;
+    padding: 0.5rem 0.75rem;
     transition: all 200ms linear;
   }
   a:hover {
@@ -79,6 +80,7 @@ const BottemNav = styled.nav`
 
 const Header = (props) => {
   const { theme, toggleTheme } = props;
+  const mTheme = useTheme();
 
   let lastKnownScrollPosition = 0;
   const [float, setFloat] = useState(false);
@@ -157,6 +159,20 @@ const Header = (props) => {
             />
           </ul>
         </BottemNav>
+        <div className="d-flex align-items-center ml-auto">
+          <div>
+            <Icon
+              color={float ? mTheme.text : "#fefefe"}
+              className="mr-3"
+              iconSize={21}
+              icon="search"
+            />
+          </div>
+          <div className="d-none d-xl-block">
+            <button className="btn btn-primary mr-2">ورود</button>
+            <button className="btn btn-secondary">ثبت نام</button>
+          </div>
+        </div>
       </div>
     </Wraper>
   );

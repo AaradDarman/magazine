@@ -35,4 +35,24 @@ export const GlobalStyles = createGlobalStyle`
   #header.float-header  a.dropdowwn-toggle::after {
     background-color: ${({ theme }) => theme.text};
   }
+  .btn-primary {
+    color: #fff;
+    background-color: ${({ theme }) => theme.accent};
+    border-color: ${({ theme }) => theme.accent};
+}
+  .btn-primary:hover {
+    color: #fff;
+    background-color: ${({ theme }) => LightenDarkenColor(theme.accent, -20)};
+    border-color: ${({ theme }) => LightenDarkenColor(theme.accent, -20)};
+}
+  .btn-secondary {
+    color: #212529;
+    background-color: #dee2e6;
+    border-color: #dee2e6;
+}
+  .btn-secondary:hover {
+    color: #212529;
+    background-color: #C8CFD6;
+    border-color: #C8CFD6;
+}
   `;
