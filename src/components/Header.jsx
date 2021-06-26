@@ -133,19 +133,19 @@ const Header = (props) => {
           <li>
             <a href="">توییچ</a>
           </li>
-          <li className="ml-auto">
+          <li className="d-none d-md-block ml-auto">
             <Toggle theme={theme} toggle={toggleTheme} />
           </li>
         </ul>
       </TopBar>
       <div className="dark-layer">
-        <BottemNav float={float}>
         <a className="navbar-brand m-0" href="/">
           <img
             src={float ? "images/logo-red.svg" : "images/logo-white.svg"}
             alt="بازی، سرگرمی، فیلم، سریال، انیمه و انیمیشن"
           />
         </a>
+        <BottemNav className="d-none d-xl-block" float={float}>
           <ul>
             <DropDown
               title="اخبار و مقالات"
