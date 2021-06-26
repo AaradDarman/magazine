@@ -11,12 +11,18 @@ const Wraper = styled.header`
   width: 100%;
   transition: all 200ms ease-in-out;
   .dark-layer {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem 1rem;
     transition: all 400ms ease-in-out;
     background-image: linear-gradient(#000000c7, transparent);
     color: #fefefe;
   }
   .dark-layer nav ul {
     transition: all 50ms ease-in-out;
+  }
+  .navbar-brand img {
+    width: 200px;
   }
 `;
 
@@ -114,6 +120,12 @@ const Header = (props) => {
       </TopBar>
       <div className="dark-layer">
         <BottemNav float={float}>
+        <a className="navbar-brand m-0" href="/">
+          <img
+            src={float ? "images/logo-red.svg" : "images/logo-white.svg"}
+            alt="بازی، سرگرمی، فیلم، سریال، انیمه و انیمیشن"
+          />
+        </a>
           <ul>
             <DropDown
               title="اخبار و مقالات"
