@@ -55,4 +55,14 @@ export const GlobalStyles = createGlobalStyle`
     background-color: #C8CFD6;
     border-color: #C8CFD6;
 }
+.bp3-overlay {
+  z-index: 100;
+}
+  .bp3-drawer{
+    background-color: ${({ theme }) => theme.primary};
+    color: ${({ theme }) => theme.text};
+  }
+  .bp3-drawer.bp3-position-left {
+    width: inherit;
+  }
   `;
