@@ -13,6 +13,20 @@ export const GlobalStyles = createGlobalStyle`
     transition: all 0.50s linear;
     caret-color:${({ theme }) => theme.accent};
   }
+  @media (min-width: 577px) {
+    body::-webkit-scrollbar {
+    height: 10px;
+  }
+  body::-webkit-scrollbar-track {
+    background-color: ${({ theme }) => theme.secondary};
+  }
+  body::-webkit-scrollbar-thumb {
+    background-color: #888;
+  }
+  body::-webkit-scrollbar-thumb:hover {
+    background-color: #555;
+  }
+  }
   button:focus {
     outline: none;
   }
@@ -58,6 +72,20 @@ export const GlobalStyles = createGlobalStyle`
 .bp3-overlay {
   z-index: 100;
 }
+@media (min-width: 577px) {
+  .bp3-drawer-body::-webkit-scrollbar {
+    height: 10px;
+  }
+  .bp3-drawer-body::-webkit-scrollbar-track {
+    background-color: ${({ theme }) => theme.secondary};
+  }
+  .bp3-drawer-body::-webkit-scrollbar-thumb {
+    background-color: #888;
+  }
+  .bp3-drawer-body::-webkit-scrollbar-thumb:hover {
+    background-color: #555;
+  }
+  }
   .bp3-drawer{
     background-color: ${({ theme }) => theme.primary};
     color: ${({ theme }) => theme.text};
