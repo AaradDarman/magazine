@@ -3,6 +3,7 @@ import { Icon } from "@blueprintjs/core";
 import styled, { useTheme } from "styled-components";
 import { LightenDarkenColor } from "../utils/colorHelper";
 import useBreakpoints from "../utils/useBreakPoints";
+import DrawerMenu from "./DrawerMenu";
 import DropDown from "./DropDown";
 import Toggle from "./shared/Toggler";
 
@@ -63,6 +64,7 @@ const TopBar = styled.nav`
   }
   a {
     display: block;
+    width: max-content;
     padding: 0.5rem 1rem;
     transition: all 200ms linear;
   }
@@ -185,6 +187,7 @@ const Header = (props) => {
               iconSize={21}
               icon="search"
             />
+            <DrawerMenu {...props} />
           </div>
           <div className="d-none d-xl-block">
             <button className="btn btn-primary mr-2">ورود</button>
