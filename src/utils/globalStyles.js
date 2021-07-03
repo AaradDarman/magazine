@@ -7,7 +7,7 @@ export const GlobalStyles = createGlobalStyle`
     padding: 0;
   }
   body {
-    background: ${({ theme }) => theme.primary};
+    background: ${({ theme }) => theme.secondary};
     color: ${({ theme }) => theme.text};
     font-family:"BYekan",Arial, sans-serif;
     transition: all 0.50s linear;
