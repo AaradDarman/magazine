@@ -108,7 +108,7 @@ const vigiato = {
   ],
 };
 
-const DrawerMenu = ({ theme, toggleTheme }) => {
+const DrawerMenu = ({ float,theme, toggleTheme }) => {
   const [isOpen, setIsOpen] = useState(false);
   const { active } = useBreakpoints();
   const mTheme = useTheme();
@@ -125,7 +125,7 @@ const DrawerMenu = ({ theme, toggleTheme }) => {
   return (
     <div className="d-inline-block d-xl-none">
       <Icon
-        color={mTheme.text}
+       color={float ? mTheme.text : "#fefefe"}
         icon="menu"
         iconSize={22}
         onClick={openDrawer}

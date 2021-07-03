@@ -187,7 +187,7 @@ const Header = (props) => {
               iconSize={21}
               icon="search"
             />
-            <DrawerMenu {...props} />
+            <DrawerMenu float={float} {...props} />
           </div>
           <div className="d-none d-xl-block">
             <button className="btn btn-primary mr-2">ورود</button>
