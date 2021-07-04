@@ -15,13 +15,12 @@ const Wraper = styled.footer`
   ul {
     display: flex;
     align-items: center;
-  }
-  ul {
     list-style: none;
     margin: 0;
   }
   ul li a {
     display: flex;
+    justify-content: center;
     padding: 0.5rem 0.75rem;
     transition: all 200ms linear;
   }
@@ -72,21 +71,21 @@ const Footer = () => {
     <Wraper>
       <div className="container-fluid py-2">
         <div className="row justify-content-center m-0 w-100">
-          <ul>
-            <li>
+          <ul className="row mb-3 mb-lg-0">
+            <li className="col-6 col-lg-auto p-0">
               <a href="#">صفحه ی اصلی</a>
             </li>
-            <li>
+            <li className="col-6 col-lg-auto p-0">
               <a href="#">تماس با ما</a>
             </li>
-            <li>
+            <li className="col-6 col-lg-auto p-0">
               <a href="#">فرصت های شغلی</a>
             </li>
-            <li>
+            <li className="col-6 col-lg-auto p-0">
               <a href="#">بایگانی</a>
             </li>
           </ul>
-          <ul>
+          <ul className="mb-3 mb-lg-0">
             <li>
               <a href="#">
                 <Icon icon="telegram" size={20} />
@@ -103,7 +102,7 @@ const Footer = () => {
               </a>
             </li>
           </ul>
-          <ul className='ml-0 ml-md-auto'>
+          <ul className="ml-0 ml-lg-auto">
             <li>
               <a href="#"></a>
             </li>
