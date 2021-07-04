@@ -93,4 +93,22 @@ export const GlobalStyles = createGlobalStyle`
   .bp3-drawer.bp3-position-left {
     width: inherit;
   }
+  *:focus{
+    outline: none;
+    outline-offset: 0;
+  }
+  .bp3-menu {
+    text-align: right;
+  }
+  .bp3-menu,.bp3-popover2 .bp3-popover2-content{
+    background:${({ theme }) => theme.primary};
+    color:${({ theme }) => theme.text};
+  }
+  .bp3-popover2 .bp3-popover2-arrow-fill {
+    fill:${({ theme }) => theme.primary};
+}
+.bp3-menu-item.bp3-active{
+    background-color:${({ theme }) => theme.accent} !important;
+    color:#fefefe;
+}
   `;

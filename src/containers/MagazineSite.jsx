@@ -1,4 +1,5 @@
 import React from "react";
+import GamesTab from "../components/GamesTab";
 import HomeCarousel from "../components/HomeCarousel";
 import MainLayout from "../components/layouts/MainLayout";
 import ScrollLayout from "../components/layouts/ScrollLayout";
@@ -261,6 +262,7 @@ const MagazineSite = (props) => {
           expedita!
         </p>
       </ScrollLayout>
+      <GamesTab />
     </MainLayout>
   );
 };
