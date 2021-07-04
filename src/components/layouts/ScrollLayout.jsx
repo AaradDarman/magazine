@@ -1,5 +1,7 @@
 import React from "react";
 import styled from "styled-components";
+import FeaturedPosts from "../FeaturedPosts";
+import Widget from "../Widget";
 
 const Wraper = styled.aside`
   margin-top: -108px;
@@ -55,6 +57,12 @@ const ScrollLayout = ({ children }) => {
               <div className="ad-item">ADS</div>
               <div className="ad-item">ADS</div>
               <div className="ad-item">ADS</div>
+            </div>
+            <div className="featured-posts">
+              <FeaturedPosts />
+            </div>
+            <div className="widgets">
+              <Widget />
             </div>
           </div>
         </LeftAside>
