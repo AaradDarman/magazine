@@ -16,6 +16,7 @@ import styled from "styled-components";
 import { hexToRGBA, LightenDarkenColor } from "../utils/colorHelper";
 import CollapseComponent from "./CollapseComponent";
 import { Popover2 } from "@blueprintjs/popover2";
+import useBreakpoints from "../utils/useBreakPoints";
 
 const Wraper = styled.div`
   background-color: ${({ theme }) => theme.primary};
@@ -24,9 +25,11 @@ const Wraper = styled.div`
   justify-content: space-between;
   padding: 1rem;
   position: relative;
+  margin-bottom: 2rem;
+  border-radius: 0.3rem;
   .gametabs-title {
     position: absolute;
-    font-size: 1.3rem;
+    font-size: ${({ isSm }) => (isSm ? "1.3rem" : "0.95rem")};
     right: 1rem;
     top: 31px;
   }
@@ -34,7 +37,7 @@ const Wraper = styled.div`
     position: absolute;
     top: 26px;
     left: 1rem;
-    z-index: 99999;
+    z-index: 2;
   }
   .bp3-button {
     background: ${({ theme }) => theme.accent};
@@ -43,7 +46,7 @@ const Wraper = styled.div`
     justify-content: flex-start;
     box-shadow: none;
     padding: 0.5rem 1rem;
-    font-size: inherit;
+    font-size: ${({ isSm }) => (isSm ? "1.3rem" : "0.95rem")};
   }
   .bp3-button.bp3-active {
     background: ${({ theme }) => theme.accent};
@@ -69,7 +72,7 @@ const Wraper = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.3em;
+    font-size: ${({ isSm }) => (isSm ? "1.3rem" : "0.95rem")};
     letter-spacing: 1px;
     margin: 1rem 0 0;
   }
@@ -181,7 +184,7 @@ const GameTab = () => {
       width: 100%;
     }
     .info h4 {
-      font-size: 1.3rem;
+      font-size: ${({ isSm }) => (isSm ? "1.3rem" : "0.95rem")};
       line-height: 35px;
       background-color: ${({ theme }) => hexToRGBA(theme.accent, 0.8)};
       transition: all 300ms ease-in-out;
@@ -364,8 +367,9 @@ const DropdownMenu = (props) => {
 };
 const GamesTab = () => {
   const [activeTab, setActiveTab] = useState("همه");
+  const breakPoints = useBreakpoints();
   return (
-    <Wraper className="gametabs">
+    <Wraper {...breakPoints} className="gametabs">
       <span className="gametabs-title">بررسی بازی ها</span>
       <div className="d-block d-lg-none cdropdown-menu">
         <DropdownMenu setActiveTab={setActiveTab} activeTab={activeTab} />
@@ -381,20 +385,28 @@ const GamesTab = () => {
         <Tab
           id="بازی های ایکس باکس وان"
           title="بازی های ایکس باکس وان"
-          panel={<GameTab />}
+          panel={<GameTab {...breakPoints} />}
         />
         <Tab
           id="بازی های نینتندو سوییچ"
           title="بازی های نینتندو سوییچ"
-          panel={<GameTab />}
+          panel={<GameTab {...breakPoints} />}
         />
         <Tab
           id="بازی های پلی استیشن"
           title="بازی های پلی استیشن"
-          panel={<GameTab />}
+          panel={<GameTab {...breakPoints} />}
         />
-        <Tab id="بازی های پی سی" title="بازی های پی سی" panel={<GameTab />} />
-        <Tab id="بازی های موبایل" title="بازی های موبایل" panel={<GameTab />} />
+        <Tab
+          id="بازی های پی سی"
+          title="بازی های پی سی"
+          panel={<GameTab {...breakPoints} />}
+        />
+        <Tab
+          id="بازی های موبایل"
+          title="بازی های موبایل"
+          panel={<GameTab {...breakPoints} />}
+        />
         <Tab id="همه" title="همه" panel={<p>asd</p>} />
       </CustomTabs>
       <div>
