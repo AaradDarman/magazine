@@ -3,6 +3,7 @@ import GamesTab from "../components/GamesTab";
 import HomeCarousel from "../components/HomeCarousel";
 import MainLayout from "../components/layouts/MainLayout";
 import ScrollLayout from "../components/layouts/ScrollLayout";
+import UpdatedCategory from "../components/UpdatedCategory";
 
 const MagazineSite = (props) => {
   return (
@@ -263,6 +264,7 @@ const MagazineSite = (props) => {
         </p>
       </ScrollLayout>
       <GamesTab />
+      <UpdatedCategory />
     </MainLayout>
   );
 };
