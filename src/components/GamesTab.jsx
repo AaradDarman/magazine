@@ -53,7 +53,7 @@ const Wraper = styled.div`
     color: #fefefe;
   }
   .bp3-button:hover {
-    background: ${({ theme }) => LightenDarkenColor(theme.accent, -20)};
+    background-color: ${({ theme }) => LightenDarkenColor(theme.accent, -20)};
     box-shadow: none;
   }
   .bp3-button::before {
@@ -95,7 +95,7 @@ const CustomTabs = styled(Tabs)`
     padding: 1rem 0;
   }
   .bp3-tab {
-    z-index: 5;
+    z-index: 0;
     padding: 0 0.2rem;
     color: ${({ theme }) => theme.text};
     transition: all 300ms ease-in-out;
@@ -197,11 +197,11 @@ const GameTab = () => {
     p {
       padding: 8px 16px 8px 8px;
     }
-    a:hover {
+    & a:hover {
       color: inherit;
       transform: scale(1.01);
     }
-    a:hover .info h4 {
+    & a:hover .info h4 {
       background-color: ${({ theme }) => hexToRGBA(theme.accent, 1)};
     }
   `;

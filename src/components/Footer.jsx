@@ -7,7 +7,7 @@ const Wraper = styled.footer`
   display: flex;
   align-items: center;
   background-color: ${({ theme }) => theme.primary};
-  margin-top: 2rem;
+  margin-top: 3rem;
   div:first-child {
     display: flex;
     align-items: center;
@@ -18,13 +18,13 @@ const Wraper = styled.footer`
     list-style: none;
     margin: 0;
   }
-  ul li a {
+  & ul li a {
     display: flex;
     justify-content: center;
     padding: 0.5rem 0.75rem;
     transition: all 200ms linear;
   }
-  ul li a:hover {
+  & ul li a:hover {
     color: ${({ theme }) => LightenDarkenColor(theme.accent, 50)};
   }
   ul:nth-child(3) li:first-child a {

@@ -6,7 +6,6 @@ import styled from "styled-components";
 import { hexToRGBA } from "../utils/colorHelper";
 const Wraper = styled.div`
   direction: ltr;
-  z-index: 1;
   .owl-carousel .owl-nav {
     display: flex;
     justify-content: space-between;
@@ -56,7 +55,7 @@ const Wraper = styled.div`
       #000000 70%
     );
     opacity: 0.85;
-    z-index: 1;
+    z-index: 9;
     pointer-events: none;
   }
   .owl-dots {
@@ -86,8 +85,8 @@ const CarouselItem = () => {
     background-size: cover;
     width: 100%;
     height: 100vh;
-    z-index: 1;
-    a:hover {
+    /* z-index: 9; */
+    & a:hover {
       color: inherit;
     }
     .carousel-caption {

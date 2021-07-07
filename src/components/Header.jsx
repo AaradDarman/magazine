@@ -13,7 +13,7 @@ const Wraper = styled.header`
   display: block;
   width: 100%;
   transition: all 200ms ease-in-out;
-  z-index: 99;
+  z-index: 11;
   .dark-layer {
     display: flex;
     align-items: center;
@@ -59,16 +59,16 @@ const TopBar = styled.nav`
     width: 100%;
     margin: 0;
   }
-  li {
+  & li {
     position: relative;
   }
-  a {
+  & a {
     display: block;
     width: max-content;
     padding: 0.5rem 1rem;
     transition: all 200ms linear;
   }
-  a:hover {
+  & a:hover {
     color: ${({ theme }) => LightenDarkenColor(theme.accent, 50)};
   }
 `;
@@ -86,12 +86,12 @@ const BottemNav = styled.nav`
     margin: 0;
     transition: all 200ms ease-in-out;
   }
-  a {
+  & a {
     display: block;
     padding: 0.5rem 0.75rem;
     transition: all 200ms linear;
   }
-  a:hover {
+  & a:hover {
     color: ${({ float, theme }) =>
       float ? LightenDarkenColor(theme.accent, 20) : "inherit"};
   }

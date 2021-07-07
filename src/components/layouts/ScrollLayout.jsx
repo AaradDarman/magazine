@@ -6,6 +6,7 @@ import Widget from "../Widget";
 const Wraper = styled.aside`
   margin-top: -108px;
   z-index: 5;
+  z-index: 0;
   position: relative;
   p {
     margin: 0;
@@ -35,7 +36,7 @@ const LeftAside = styled.aside`
     background-color: ${({ theme }) => theme.secondary};
     margin-bottom: 1rem;
   }
-  a:hover {
+  & a:hover {
     color: inherit;
   }
 `;
