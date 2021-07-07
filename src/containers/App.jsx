@@ -5,6 +5,7 @@ import { lightTheme, darkTheme } from "../utils/themes";
 import { GlobalStyles } from "../utils/globalStyles";
 import { useDarkMode } from "../utils/useDarkMode";
 import MagazineSite from "./MagazineSite";
+import { BrowserRouter } from "react-router-dom";
 
 const App = () => {
   const [theme, toggleTheme, componentMounted] = useDarkMode();
@@ -22,8 +23,10 @@ const App = () => {
 
   return (
     <ThemeProvider theme={themeMode}>
-      <GlobalStyles />
-      <MagazineSite theme={theme} toggleTheme={toggleTheme} />
+      <BrowserRouter>
+        <GlobalStyles />
+        <MagazineSite theme={theme} toggleTheme={toggleTheme} />
+      </BrowserRouter>
     </ThemeProvider>
   );
 };
