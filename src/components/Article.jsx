@@ -2,10 +2,11 @@ import React from "react";
 import styled from "styled-components";
 import Tooltip from "./shared/Tooltip";
 import Icon from "./shared/Icon";
+import useBreakpoints from "../utils/useBreakPoints";
 
 const Wraper = styled.article`
   display: flex;
-  padding: 1.5rem;
+  padding: ${({ isSm }) => (isSm ? "1.5rem" : "0.5rem")};
   position: relative;
   height: 133px;
   box-sizing: content-box;
@@ -15,9 +16,9 @@ const Wraper = styled.article`
     overflow: hidden;
     background: url("images/img3.jpg") no-repeat center center;
     background-size: cover;
-    width: 27%;
-    height: 100%;
-    margin-left: 1.4rem;
+    width: ${({ isSm }) => (isSm ? "27%" : "35%")};
+    height: ${({ isSm }) => (isSm ? "100%" : "80%")};
+    margin-left: ${({ isSm }) => (isSm ? "1.4rem" : "0.5rem")};
     border-radius: 0.3rem;
   }
   & > a::after {
@@ -41,6 +42,11 @@ const Wraper = styled.article`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    width: ${({ isSm }) => (isSm ? "" : "65%")};
+  }
+  .post-info h4 {
+    position: ${({ isSm }) => (isSm ? "relative" : "")};
+    margin-bottom: ${({ isSm }) => (isSm ? "" : 0)};
   }
   .post-info h4 span {
     font-size: 15px;
@@ -50,7 +56,7 @@ const Wraper = styled.article`
     margin-bottom: 1rem;
   }
   .post-info a {
-    font-size: 1.1rem;
+    font-size: ${({ isSm }) => (isSm ? "1.1rem" : "0.9rem")};
     transition: all 300ms ease-in-out;
   }
   .post-info a:hover {
@@ -69,6 +75,7 @@ const Wraper = styled.article`
     margin-left: 0.5rem;
   }
   .tooltiptext {
+    display: ${({ isSm }) => (isSm ? "flex" : "none")};
     font-size: 0.8rem;
     background-color: ${({ theme }) => theme.secondary};
     color: ${({ theme }) => theme.text};
@@ -78,15 +85,17 @@ const Wraper = styled.article`
   }
   .post-info h4 > div {
     position: absolute;
-    left: 10px;
-    top: 10px;
+    left: ${({ isSm }) => (isSm ? "-10px" : "10px")};
+    bottom: ${({ isSm }) => (isSm ? "" : "5px")};
+    top: ${({ isSm }) => (isSm ? "10px" : "")};
     color: ${({ theme }) => theme.accent};
   }
 `;
 
 const Article = () => {
+  const breakPoints = useBreakpoints();
   return (
-    <Wraper>
+    <Wraper {...breakPoints}>
       <a href="#"></a>
       <div className="post-info">
         <h4>
@@ -100,8 +109,10 @@ const Article = () => {
             کرده است
           </a>
         </h4>
-        <p className="subtitle">بد قولی دوباره سی دی پراجکت رد</p>
-        <div className="meta-info">
+        <p className="subtitle d-none d-lg-block">
+          بد قولی دوباره سی دی پراجکت رد
+        </p>
+        <div className="meta-info d-flex d-lg-block flex-column">
           <span>
             <Icon className="icon" icon="user" size={14} />
             اشکان دولتی
@@ -109,7 +120,7 @@ const Article = () => {
           <span>
             <Icon className="icon" icon="calendar" size={14} />۱ ساعت پیش
           </span>
-          <span>
+          <span className="d-none d-lg-inline">
             <Icon className="icon" icon="comment" size={14} />3
           </span>
         </div>
