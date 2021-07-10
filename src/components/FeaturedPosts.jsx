@@ -35,7 +35,7 @@ const Wraper = styled.section`
     display: block;
     width: 100%;
     height: 300px;
-    background: url("images/banner.jpg") no-repeat center center;
+    background: url("/images/banner.jpg") no-repeat center center;
     background-size: cover;
     position: relative;
     min-height: 50px;

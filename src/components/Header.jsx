@@ -143,7 +143,7 @@ const Header = (props) => {
       <div className="dark-layer">
         <a className="navbar-brand m-0" href="/">
           <img
-            src={float ? "images/logo-red.svg" : "images/logo-white.svg"}
+            src={float ? "/images/logo-red.svg" : "/images/logo-white.svg"}
             alt="بازی، سرگرمی، فیلم، سریال، انیمه و انیمیشن"
           />
         </a>

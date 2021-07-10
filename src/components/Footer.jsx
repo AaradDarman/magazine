@@ -32,8 +32,8 @@ const Wraper = styled.footer`
     height: 24px;
     background: ${({ theme }) =>
       theme.isDark
-        ? "url(images/digiato-dark.jpg)"
-        : "url(images/digiato.png)"};
+        ? "url(/images/digiato-dark.jpg)"
+        : "url(/images/digiato.png)"};
     background-position: center;
     background-repeat: no-repeat;
     display: inline-block;
@@ -46,8 +46,8 @@ const Wraper = styled.footer`
     height: 24px;
     background: ${({ theme }) =>
       theme.isDark
-        ? "url(images/rooziato-dark.jpg)"
-        : "url(images/rooziato.png)"};
+        ? "url(/images/rooziato-dark.jpg)"
+        : "url(/images/rooziato.png)"};
     background-position: center;
     background-repeat: no-repeat;
     display: inline-block;
