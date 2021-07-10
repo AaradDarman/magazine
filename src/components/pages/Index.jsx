@@ -1,5 +1,6 @@
 import React from "react";
 import Article from "../Article";
+import Articles from "../Articles";
 import GamesTab from "../GamesTab";
 import HomeCarousel from "../HomeCarousel";
 import ScrollLayout from "../layouts/ScrollLayout";
@@ -12,7 +13,7 @@ const Index = () => {
         <HomeCarousel />
       </div>
       <ScrollLayout>
-        <Article />
+        <Articles />
       </ScrollLayout>
       <GamesTab />
       <UpdatedCategory />
