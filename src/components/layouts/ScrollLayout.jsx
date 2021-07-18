@@ -1,11 +1,12 @@
 import React from "react";
+import { withRouter } from "react-router-dom";
 import styled from "styled-components";
+import useBreakpoints from "../../utils/useBreakPoints";
 import FeaturedPosts from "../FeaturedPosts";
 import Widget from "../Widget";
 
 const Wraper = styled.aside`
-  margin-top: -108px;
-  z-index: 5;
+  margin-top: ${({ path, isLg }) => (path !== "/" && isLg ? "-108px" : 0)};
   z-index: 0;
   position: relative;
   p {
@@ -13,11 +14,7 @@ const Wraper = styled.aside`
   }
 `;
 
-const RightAside = styled.aside`
-  #right-side {
-    background-color: ${({ theme }) => theme.primary};
-  }
-`;
+const RightAside = styled.aside``;
 
 const LeftAside = styled.aside`
   position: relative;
@@ -41,14 +38,13 @@ const LeftAside = styled.aside`
   }
 `;
 
-const ScrollLayout = ({ children }) => {
+const ScrollLayout = ({ children, match }) => {
+  const { isLg } = useBreakpoints();
   return (
-    <Wraper className="container">
+    <Wraper {...match} isLg={isLg} className="container">
       <div className="row">
         <RightAside className="right-side col-12 col-lg-8 py-3">
-          <main id="right-side" className="rounded">
-            {children}
-          </main>
+          <main id="right-side">{children}</main>
         </RightAside>
         <LeftAside className="left-site col-12 col-lg-4 py-3 rounded">
           <div className="sidebar-container rounded">
@@ -72,4 +68,4 @@ const ScrollLayout = ({ children }) => {
   );
 };
 
-export default ScrollLayout;
+export default withRouter(ScrollLayout);
