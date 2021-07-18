@@ -3,6 +3,7 @@ import styled from "styled-components";
 import useBreakpoints from "../../utils/useBreakPoints";
 import ScrollLayout from "../layouts/ScrollLayout";
 import Article from "../post/Article";
+import Commments from "../post/Commments";
 import RecomendedPosts from "../post/RecomendedPosts";
 import RelatedPosts from "../post/RelatedPosts";
 import Icon from "../shared/Icon";
@@ -157,6 +158,7 @@ const Post = ({ match }) => {
         <Article post={post} />
         <RecomendedPosts />
         <RelatedPosts />
+        <Commments post={post} />
       </ScrollLayout>
     </>
   );
