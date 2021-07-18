@@ -4,6 +4,7 @@ import "owl.carousel/dist/assets/owl.carousel.css";
 import "owl.carousel/dist/assets/owl.theme.default.css";
 import styled from "styled-components";
 import { hexToRGBA } from "../utils/colorHelper";
+import { useSelector } from "react-redux";
 const Wraper = styled.div`
   direction: ltr;
   .owl-carousel .owl-nav {
@@ -79,13 +80,12 @@ const Wraper = styled.div`
   }
 `;
 
-const CarouselItem = () => {
+const CarouselItem = ({ post }) => {
   const Wraper = styled.div`
-    background: url("images/family.jpg") no-repeat center center;
+    background: url(/images/${post.banner}) no-repeat center center;
     background-size: cover;
     width: 100%;
     height: 100vh;
-    /* z-index: 9; */
     & a:hover {
       color: inherit;
     }
@@ -158,15 +158,13 @@ const CarouselItem = () => {
     <Wraper>
       <div className="carousel-caption">
         <h2>
-          <a href="#">
-            چگونه دوستان و خانواده خود را به تجربه بازی‌های ویدیویی دعوت کنیم؟
-          </a>
+          <a href={`/p/${post._id}`}>{post.title}</a>
         </h2>
         <div className="d-none d-lg-block">
-          <a href="">روش‌ هایی جذاب برای جذب هم بازی</a>
+          <a href={`/p/${post._id}`}>{post.subtitle}</a>
         </div>
         <div className="d-none d-lg-block">
-          <a href="">مطالعه می‌کنم ...</a>
+          <a href={`/p/${post._id}`}>مطالعه می‌کنم ...</a>
         </div>
       </div>
     </Wraper>
@@ -174,6 +172,7 @@ const CarouselItem = () => {
 };
 
 const HomeCarousel = () => {
+  const { topNewPosts } = useSelector((state) => state);
   return (
     <Wraper className="home-carousel">
       <OwlCarousel
@@ -208,9 +207,9 @@ const HomeCarousel = () => {
           },
         }}
       >
-        <CarouselItem />
-        <CarouselItem />
-        <CarouselItem />
+        {topNewPosts.map((post) => (
+          <CarouselItem post={post} />
+        ))}
       </OwlCarousel>
     </Wraper>
   );
