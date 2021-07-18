@@ -1,4 +1,5 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import Article from "../Article";
 import Articles from "../Articles";
 import GamesTab from "../GamesTab";
@@ -7,6 +8,7 @@ import ScrollLayout from "../layouts/ScrollLayout";
 import UpdatedCategory from "../UpdatedCategory";
 
 const Index = () => {
+  const { latestPosts } = useSelector((state) => state);
   return (
     <>
       <div style={{ marginTop: "40px" }}>
@@ -16,7 +18,9 @@ const Index = () => {
         <Articles />
       </ScrollLayout>
       <GamesTab />
-      <UpdatedCategory />
+      {latestPosts.map((posts) => (
+        <UpdatedCategory posts={posts} />
+      ))}
     </>
   );
 };

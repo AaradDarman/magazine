@@ -45,7 +45,8 @@ const Article = styled.article`
   .item-large .cover {
     position: relative;
     overflow: hidden;
-    background: url("images/banner-2.jpg") no-repeat center center;
+    background: url(/images/${({ firstPostImg }) => firstPostImg}) no-repeat
+      center center;
     background-size: cover;
     width: 100%;
     height: 364px;
@@ -122,17 +123,8 @@ const Article = styled.article`
   .item:not(:last-child) {
     margin-bottom: 2rem;
   }
-  .item > a {
-    display: block;
-    position: relative;
-    overflow: hidden;
-    background: url("images/banner.jpg") no-repeat center center;
-    background-size: cover;
-    width: 27%;
-    height: 100%;
-    min-height: 90px;
-    margin-left: 1rem;
-    border-radius: 0.2rem;
+  .item .info {
+    width: 73%;
   }
   .item .info h5 {
     font-size: ${({ isSm }) => (isSm ? "1rem" : "0.9rem")};
@@ -167,72 +159,70 @@ const Article = styled.article`
     margin-left: 1rem;
   }
 `;
-const UpdatedCategory = () => {
+
+const Item = styled.article`
+  & > a {
+    display: block;
+    position: relative;
+    overflow: hidden;
+    background: url(/images/${({ imgUrl }) => imgUrl}) no-repeat center center;
+    background-size: cover;
+    width: 27%;
+    height: 100%;
+    min-height: 90px;
+    margin-left: 1rem;
+    border-radius: 0.2rem;
+  }
+`;
+const UpdatedCategory = ({ posts }) => {
   const breakPoints = useBreakpoints();
   return (
-    <Article {...breakPoints}>
-      <div className="article-title">
-        <h4>آخرین مطالب سرگرمی</h4>
-        <a className="d-none d-lg-flex" href="#">
-          تمام مطالب
-        </a>
-      </div>
-      <div className="row">
-        <div className="col-12 col-lg-8">
-          <article className="item-large mb-4 mb-lg-0">
-            <div className="cover">
-              <a href="#"></a>
-              <div className="info">
-                <h5 className="title">
-                  معرفی تسک‌مستر – تقلید کننده تمام سبک‌های مبارزه
-                </h5>
-                <span className="subtitle d-none d-lg-flex">تماشا کنید</span>
+    <>
+      <Article firstPostImg={posts.content[0].postThumbnail} {...breakPoints}>
+        <div className="article-title">
+          <h4>{`آخرین مطالب ${posts.title}`}</h4>
+          <a className="d-none d-lg-flex" href="#">
+            تمام مطالب
+          </a>
+        </div>
+        <div className="row">
+          <div className="col-12 col-lg-8">
+            <article className="item-large mb-4 mb-lg-0">
+              <div className="cover">
+                <a href="#"></a>
+                <div className="info">
+                  <h5 className="title">{posts.content[0].title}</h5>
+                  <span className="subtitle d-none d-lg-flex">تماشا کنید</span>
+                </div>
               </div>
-            </div>
-          </article>
+            </article>
+          </div>
+          <div className="col-12 col-lg-4 d-flex flex-column">
+            {posts.content.map((c, index) =>
+              index !== 0 ? (
+                <Item imgUrl={c.postThumbnail} className="item">
+                  <a href="#"></a>
+                  <div className="info">
+                    <h5 className="title">
+                      <a href="#">{c.title}</a>
+                    </h5>
+                    <span className="subtitle d-none d-lg-flex">
+                      {c.subtitle}
+                    </span>
+                  </div>
+                </Item>
+              ) : null
+            )}
+          </div>
         </div>
-        <div className="col-12 col-lg-4 d-flex flex-column">
-          <article className="item">
-            <a href="#"></a>
-            <div className="info">
-              <h5 className="title">
-                <a href="#">معرفی آیرون میدن – رقیب حسود بلک ویدو</a>
-              </h5>
-              <span className="subtitle d-none d-lg-flex">
-                ویژگی‌هایی که فراموش نشدند
-              </span>
-            </div>
-          </article>
-          <article className="item">
-            <a href="#"></a>
-            <div className="info">
-              <h5 className="title">
-                <a href="#">معرفی آیرون میدن – رقیب حسود بلک ویدو</a>
-              </h5>
-              <span className="subtitle d-none d-lg-flex">
-                ویژگی‌هایی که فراموش نشدند
-              </span>
-            </div>
-          </article>
-          <article className="item">
-            <a href="#"></a>
-            <div className="info">
-              <h5 className="title">
-                <a href="#">معرفی آیرون میدن – رقیب حسود بلک ویدو</a>
-              </h5>
-              <span className="subtitle d-none d-lg-flex">
-                ویژگی‌هایی که فراموش نشدند
-              </span>
-            </div>
-          </article>
+        <div className="d-flex d-lg-none more">
+          <a href="#">
+            <i className="fas fa-chevron-left"></i>
+            {`نوشته های ${posts.title}`}
+          </a>
         </div>
-      </div>
-      <div className="d-flex d-lg-none more">
-        <a href="#">
-          <i className="fas fa-chevron-left"></i>نوشته های سرگرمی
-        </a>
-      </div>
-    </Article>
+      </Article>
+    </>
   );
 };
 
