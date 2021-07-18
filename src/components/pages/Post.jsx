@@ -4,6 +4,7 @@ import useBreakpoints from "../../utils/useBreakPoints";
 import ScrollLayout from "../layouts/ScrollLayout";
 import Article from "../post/Article";
 import RecomendedPosts from "../post/RecomendedPosts";
+import RelatedPosts from "../post/RelatedPosts";
 import Icon from "../shared/Icon";
 import Tooltip from "../shared/Tooltip";
 import { setPost } from "../../redux/actions/post";
@@ -155,6 +156,7 @@ const Post = ({ match }) => {
       <ScrollLayout>
         <Article post={post} />
         <RecomendedPosts />
+        <RelatedPosts />
       </ScrollLayout>
     </>
   );
