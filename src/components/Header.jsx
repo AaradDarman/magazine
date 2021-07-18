@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Icon } from "@blueprintjs/core";
 import styled, { useTheme } from "styled-components";
 import { LightenDarkenColor } from "../utils/colorHelper";
@@ -6,6 +6,7 @@ import useBreakpoints from "../utils/useBreakPoints";
 import DrawerMenu from "./DrawerMenu";
 import DropDown from "./DropDown";
 import Toggle from "./shared/Toggler";
+import CustomModal from "./shared/CustomModal";
 
 const Wraper = styled.header`
   position: fixed;
@@ -98,24 +99,34 @@ const BottemNav = styled.nav`
 `;
 
 const Header = (props) => {
-  const { theme, toggleTheme } = props;
+  const { theme, toggleTheme, location } = props;
   const mTheme = useTheme();
   const { isSm } = useBreakpoints();
 
   let lastKnownScrollPosition = 0;
   const [float, setFloat] = useState(false);
 
-  document.addEventListener("scroll", () => {
-    lastKnownScrollPosition = window.scrollY;
-    if (lastKnownScrollPosition === 0) {
-      document.getElementById("header").classList.remove("float-header");
-      setFloat(false);
-    }
-    if (lastKnownScrollPosition > 15) {
+  console.log(props);
+  useEffect(() => {
+    if (location.pathname !== "/") {
       document.getElementById("header").classList.add("float-header");
       setFloat(true);
     }
-  });
+  }, [location.pathname]);
+
+  if (location.pathname === "/") {
+    document.addEventListener("scroll", () => {
+      lastKnownScrollPosition = window.scrollY;
+      if (lastKnownScrollPosition === 0) {
+        document.getElementById("header").classList.remove("float-header");
+        setFloat(false);
+      }
+      if (lastKnownScrollPosition > 15) {
+        document.getElementById("header").classList.add("float-header");
+        setFloat(true);
+      }
+    });
+  }
   return (
     <Wraper id="header">
       <TopBar isSm={isSm} className="mw-100 overflow-auto">
@@ -190,8 +201,7 @@ const Header = (props) => {
             <DrawerMenu float={float} {...props} />
           </div>
           <div className="d-none d-xl-block">
-            <button className="btn btn-primary mr-2">ورود</button>
-            <button className="btn btn-secondary">ثبت نام</button>
+            <CustomModal />
           </div>
         </div>
       </div>
