@@ -1,4 +1,5 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import styled from "styled-components";
 import { hexToRGBA } from "../utils/colorHelper";
 import Tooltip from "./shared/Tooltip";
@@ -67,6 +68,7 @@ const Wraper = styled.section`
 `;
 
 const Widget = () => {
+  const { mostViewedPosts } = useSelector((state) => state);
   return (
     <Wraper className="widget">
       <div className="headline">
@@ -74,38 +76,17 @@ const Widget = () => {
       </div>
       <div className="widget-content">
         <ul>
-          <li>
-            <a href="#">
-              دنباله فیلم‌های ترسناکی که به اندازه قسمت نخست باارزش بودند
-            </a>
-            <Tooltip className="mr-2" Text={`5 نظر`}>
-              <span>5</span>
-            </Tooltip>
-          </li>
-          <li>
-            <a href="#">
-              دنباله فیلم‌های ترسناکی که به اندازه قسمت نخست باارزش بودند
-            </a>
-            <Tooltip className="mr-2" Text={`5 نظر`}>
-              <span>5</span>
-            </Tooltip>
-          </li>
-          <li>
-            <a href="#">
-              دنباله فیلم‌های ترسناکی که به اندازه قسمت نخست باارزش بودند
-            </a>
-            <Tooltip className="mr-2" Text={`5 نظر`}>
-              <span>5</span>
-            </Tooltip>
-          </li>
-          <li>
-            <a href="#">
-              دنباله فیلم‌های ترسناکی که به اندازه قسمت نخست باارزش بودند
-            </a>
-            <Tooltip className="mr-2" Text={`5 نظر`}>
-              <span>5</span>
-            </Tooltip>
-          </li>
+          {mostViewedPosts.map((post) => (
+            <li>
+              <a href={`/p/${post._id}`}>{post.title}</a>
+              <Tooltip
+                className="mr-2"
+                Text={`${post.comments && post.comments.length} نظر`}
+              >
+                <span>{post.comments && post.comments.length}</span>
+              </Tooltip>
+            </li>
+          ))}
         </ul>
       </div>
     </Wraper>
