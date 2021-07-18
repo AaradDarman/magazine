@@ -1,19 +1,17 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
-import GamesTab from "../components/GamesTab";
-import HomeCarousel from "../components/HomeCarousel";
 import MainLayout from "../components/layouts/MainLayout";
-import ScrollLayout from "../components/layouts/ScrollLayout";
 import Index from "../components/pages/Index";
-import UpdatedCategory from "../components/UpdatedCategory";
+import Post from "../components/pages/Post";
 
 const MagazineSite = (props) => {
   return (
-    <Switch>
-      <MainLayout {...props}>
-        <Route path="/" exact component={Index} />
-      </MainLayout>
-    </Switch>
+      <Switch>
+        <MainLayout {...props}>
+          <Route path="/" exact component={Index} />
+          <Route path="/p/:id" exact component={Post} />
+        </MainLayout>
+      </Switch>
   );
 };
 
