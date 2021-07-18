@@ -1,11 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import ReactPaginate from "react-paginate";
 import styled from "styled-components";
 import { paginate } from "../utils/paginate";
 import useBreakpoints from "../utils/useBreakPoints";
 import Article from "./Article";
+import { useSelector } from "react-redux";
 
 const Wraper = styled.article`
+  background-color: ${({ theme }) => theme.primary};
+  border-radius: 0.25rem;
   .pagination {
     direction: rtl;
     background-color: ${({ theme }) => theme.primary};
@@ -30,7 +33,7 @@ const Wraper = styled.article`
   }
   .pagination .active {
     background-color: ${({ theme }) => theme.accent};
-    color: ${({ theme }) => theme.text};
+    color: #fefefe;
   }
   .pagination a {
     outline: none;
@@ -45,30 +48,9 @@ const Wraper = styled.article`
 const Articles = () => {
   const [perPage] = useState(20);
   const [currentPage, setCurrentPage] = useState(1);
-  //   const match = useRouteMatch();
+  const { posts } = useSelector((state) => state);
+
   const totalItems = 140;
-  const items = [
-    { title: "selook" },
-    { title: "selook" },
-    { title: "selook" },
-    { title: "selook" },
-    { title: "selook" },
-    { title: "selook" },
-    { title: "selook" },
-    { title: "selook" },
-    { title: "selook" },
-    { title: "selook" },
-    { title: "selook" },
-    { title: "selook" },
-    { title: "selook" },
-    { title: "selook" },
-    { title: "selook" },
-    { title: "selook" },
-    { title: "selook" },
-    { title: "selook" },
-    { title: "selook" },
-    { title: "selook" },
-  ];
 
   const handlePageChange = (data) => {
     let selected = data.selected;
@@ -87,11 +69,11 @@ const Articles = () => {
 
   const { isLg } = useBreakpoints();
 
-  const articles = paginate(items, currentPage, perPage);
+  const articles = paginate(posts, currentPage, perPage);
   return (
     <Wraper>
-      {articles.map(() => (
-        <Article />
+      {articles.map((post) => (
+        <Article post={post} />
       ))}
       <ReactPaginate
         previousLabel={<i class="fas fa-angle-double-right"></i>}
@@ -99,7 +81,7 @@ const Articles = () => {
         breakLabel={"..."}
         forcePage={currentPage - 1}
         breakClassName={"break-me"}
-        pageCount={Math.ceil(totalItems / perPage)}
+        pageCount={Math.ceil(posts.length / perPage)}
         marginPagesDisplayed={1}
         pageRangeDisplayed={isLg ? 7 : 2}
         onPageChange={handlePageChange}

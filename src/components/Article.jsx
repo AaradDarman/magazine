@@ -3,6 +3,7 @@ import styled from "styled-components";
 import Tooltip from "./shared/Tooltip";
 import Icon from "./shared/Icon";
 import useBreakpoints from "../utils/useBreakPoints";
+import { Link } from "react-router-dom";
 
 const Wraper = styled.article`
   display: flex;
@@ -10,18 +11,18 @@ const Wraper = styled.article`
   position: relative;
   height: 133px;
   box-sizing: content-box;
-  & > a {
+  & > .link {
     display: block;
     position: relative;
     overflow: hidden;
-    background: url("images/img3.jpg") no-repeat center center;
+    background: url(${({ imgUrl }) => imgUrl}) no-repeat center center;
     background-size: cover;
     width: ${({ isSm }) => (isSm ? "27%" : "35%")};
     height: ${({ isSm }) => (isSm ? "100%" : "80%")};
     margin-left: ${({ isSm }) => (isSm ? "1.4rem" : "0.5rem")};
     border-radius: 0.3rem;
   }
-  & > a::after {
+  & > .link::after {
     content: "";
     display: block;
     width: 200%;
@@ -34,19 +35,19 @@ const Wraper = styled.article`
     bottom: 70%;
     transition: all 0.2s linear;
   }
-  & > a:hover::after {
+  & > .link:hover::after {
     left: -50%;
     bottom: -50%;
   }
   .post-info {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    width: ${({ isSm }) => (isSm ? "" : "65%")};
+    justify-content: ${({ isSm }) => (isSm ? "space-between" : "start")};
+    width: ${({ isSm }) => (isSm ? "73%" : "65%")};
   }
   .post-info h4 {
     position: ${({ isSm }) => (isSm ? "relative" : "")};
-    margin-bottom: ${({ isSm }) => (isSm ? "" : 0)};
+    margin-bottom: ${({ isSm }) => (isSm ? 0 : "0.5rem")};
   }
   .post-info h4 span {
     font-size: 15px;
@@ -55,11 +56,11 @@ const Wraper = styled.article`
   .post-info p {
     margin-bottom: 1rem;
   }
-  .post-info a {
+  .post-info .link {
     font-size: ${({ isSm }) => (isSm ? "1.1rem" : "0.9rem")};
     transition: all 300ms ease-in-out;
   }
-  .post-info a:hover {
+  .post-info .link:hover {
     color: ${({ theme }) => theme.accent};
   }
   .subtitle {
@@ -92,11 +93,13 @@ const Wraper = styled.article`
   }
 `;
 
-const Article = () => {
+const Article = ({ post }) => {
   const breakPoints = useBreakpoints();
+
   return (
-    <Wraper {...breakPoints}>
-      <a href="#"></a>
+    <Wraper {...breakPoints} imgUrl={`/images/${post.postThumbnail}`}>
+      {/* <a href="#"></a> */}
+      <Link className="link" to={`/p/${post._id}`} />
       <div className="post-info">
         <h4>
           <Tooltip Text="ذخیره مطلب">
@@ -104,24 +107,22 @@ const Article = () => {
               <i className="far fa-bookmark"></i>
             </span>
           </Tooltip>
-          <a href="">
-            سی‌دی پراجکت رد بسته الحاقی رایگان Cyberpunk 2077 را کاملا فراموش
-            کرده است
-          </a>
+          <Link className="link" to={`/p/${post._id}`}>
+            {post.title}
+          </Link>
         </h4>
-        <p className="subtitle d-none d-lg-block">
-          بد قولی دوباره سی دی پراجکت رد
-        </p>
+        <p className="subtitle d-none d-lg-block">{post.subtitle}</p>
         <div className="meta-info d-flex d-lg-block flex-column">
           <span>
             <Icon className="icon" icon="user" size={14} />
-            اشکان دولتی
+            {post.author}
           </span>
           <span>
             <Icon className="icon" icon="calendar" size={14} />۱ ساعت پیش
           </span>
           <span className="d-none d-lg-inline">
-            <Icon className="icon" icon="comment" size={14} />3
+            <Icon className="icon" icon="comment" size={14} />
+            {post.comments.length}
           </span>
         </div>
       </div>
