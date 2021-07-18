@@ -21,6 +21,7 @@ const Wraper = styled.div`
     position: absolute;
     z-index: 1;
     top: 0;
+    box-shadow: 0 0 0 1px rgb(16 22 26 / 10%), 0 2px 4px rgb(16 22 26 / 20%), 0 8px 24px rgb(16 22 26 / 20%);
     transform: translateY(calc(-100% - 5px));
   }
   .tooltiptext::after {
