@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Classes, Drawer, Icon } from "@blueprintjs/core";
 import useBreakpoints from "../utils/useBreakPoints";
 import styled, { useTheme } from "styled-components";
 import CollapseComponent from "./CollapseComponent";
 import Toggle from "./shared/Toggler";
+import { appContext } from "../context/app-context";
 
 const Container = styled.div`
   display: flex;
@@ -108,9 +109,10 @@ const vigiato = {
   ],
 };
 
-const DrawerMenu = ({ float,theme, toggleTheme }) => {
+const DrawerMenu = ({ float, theme, toggleTheme }) => {
   const [isOpen, setIsOpen] = useState(false);
   const { active } = useBreakpoints();
+  const { setModalState } = useContext(appContext);
   const mTheme = useTheme();
   useEffect(() => {
     closeDrawer();
@@ -125,7 +127,7 @@ const DrawerMenu = ({ float,theme, toggleTheme }) => {
   return (
     <div className="d-inline-block d-xl-none">
       <Icon
-       color={float ? mTheme.text : "#fefefe"}
+        color={float ? mTheme.text : "#fefefe"}
         icon="menu"
         iconSize={22}
         onClick={openDrawer}
@@ -159,8 +161,24 @@ const DrawerMenu = ({ float,theme, toggleTheme }) => {
         </div>
         <div className={Classes.DRAWER_FOOTER}>
           <ButtonContainer>
-            <button className="btn btn-primary">ورود</button>
-            <button className="btn btn-secondary">ثبت نام</button>
+            <button
+              onClick={() => {
+                closeDrawer();
+                setModalState(true);
+              }}
+              className="btn btn-primary"
+            >
+              ورود
+            </button>
+            <button
+              onClick={() => {
+                closeDrawer();
+                setModalState(true);
+              }}
+              className="btn btn-secondary"
+            >
+              ثبت نام
+            </button>
           </ButtonContainer>
         </div>
       </Drawer>
