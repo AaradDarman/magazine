@@ -12,7 +12,13 @@ export const GlobalStyles = createGlobalStyle`
     font-family:"BYekan",Arial, sans-serif;
     transition: all 0.50s linear;
     caret-color:${({ theme }) => theme.accent};
+    padding-right: 0 !important;
+    overflow: initial !important;
   }
+  ::selection {
+    background-color: #eab9bd;
+    color: #333;
+   }
   @media (min-width: 577px) {
     body::-webkit-scrollbar {
     height: 10px;
@@ -99,6 +105,7 @@ export const GlobalStyles = createGlobalStyle`
   }
   .bp3-menu {
     text-align: right;
+    min-width: 0;
   }
   .bp3-menu,.bp3-popover2 .bp3-popover2-content{
     background:${({ theme }) => theme.primary};
@@ -110,5 +117,23 @@ export const GlobalStyles = createGlobalStyle`
 .bp3-menu-item.bp3-active{
     background-color:${({ theme }) => theme.accent} !important;
     color:#fefefe;
+}
+.modal-backdrop.show {
+    opacity: .7;
+}
+.modal-backdrop {
+    background-color: #293133;
+}
+.modal-content::-webkit-scrollbar {
+  height: 10px;
+}
+.modal-content::-webkit-scrollbar-track {
+  background-color: ${({ theme }) => theme.secondary};
+}
+.modal-content::-webkit-scrollbar-thumb {
+  background-color: #888;
+}
+.modal-content::-webkit-scrollbar-thumb:hover {
+  background-color: #555;
 }
   `;
